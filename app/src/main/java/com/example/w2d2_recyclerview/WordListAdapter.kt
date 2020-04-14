@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class WordListAdapter(private var list: MutableList<String>, private val clickListener: (String) -> Unit)
+class WordListAdapter(private var list: MutableList<Word>, private val clickListener: (String) -> Unit)
     : RecyclerView.Adapter<WordViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
@@ -21,6 +21,12 @@ class WordListAdapter(private var list: MutableList<String>, private val clickLi
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         holder.bind(list[position], clickListener)
+    }
+
+    fun updateWords(words: MutableList<Word>) {
+        list.clear()
+        list = words
+        notifyDataSetChanged()
     }
 
 }

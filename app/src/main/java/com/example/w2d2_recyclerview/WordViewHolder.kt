@@ -6,9 +6,9 @@ import kotlinx.android.synthetic.main.item.view.*
 
 class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(text: String, clickListener: (String) -> Unit) {
-        itemView.wordTxt.text = text
-        itemView.setOnClickListener { clickListener(text)}
+    fun bind(word: Word, clickListener: (String) -> Unit) {
+        itemView.wordTxt.text = word.text
+        itemView.setOnClickListener { word.text?.let { it1 -> clickListener(it1) } }
     }
 
 }
